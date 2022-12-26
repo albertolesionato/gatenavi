@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       routes: {
-        '/some-scaffold': (_) => Scaffold(
+        '/some-scaffold': (_) => const Scaffold(
           backgroundColor: Colors.blue,
           body: SomeScaffold(),
         )
