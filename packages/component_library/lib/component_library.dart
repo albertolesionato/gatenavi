@@ -1,0 +1,1 @@
+export 'src/scaffolds/some_scaffold.dart';
