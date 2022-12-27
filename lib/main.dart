@@ -1,22 +1,33 @@
 import 'package:flutter/material.dart';
-import 'sign_in/sign_in_screen.dart';
+import 'navigation/app_router.dart';
+import 'navigation/app_route_parser.dart';
+
 
 void main() {
   runApp(const App());
 }
 
-class App extends StatelessWidget {
+class App extends StatefulWidget {
   const App({super.key});
 
   @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  final appRouter = AppRouter();
+
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Gatenavi',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SignInScreen()
+      backButtonDispatcher: RootBackButtonDispatcher(),
+      routeInformationParser: AppRouteParser(),
+      routerDelegate: appRouter,
     );
   }
 }

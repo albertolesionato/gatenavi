@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
-import 'link_config.dart';
+import 'package:gatenavi/sign_in/sign_in_screen.dart';
+import 'link_configuration.dart';
 
-class AppRouter extends RouterDelegate<LinkConfig>
-    with ChangeNotifier, PopNavigatorRouterDelegateMixin<LinkConfig> {
+class AppRouter extends RouterDelegate<LinkConfiguration>
+    with ChangeNotifier, PopNavigatorRouterDelegateMixin<LinkConfiguration> {
   AppRouter() : navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   final GlobalKey<NavigatorState> navigatorKey;
 
   @override
-  LinkConfig get currentConfiguration => LinkConfig();
+  LinkConfiguration get currentConfiguration => LinkConfiguration();
+
+  @override
+  Future<void> setNewRoutePath(LinkConfiguration configuration) {
+    // TODO: implement setNewRoutePath
+    throw UnimplementedError();
+  }
 
   bool onPopPage(Route<dynamic> route, dynamic result) {
     return true;
+  }
+
+  Page createPage(Widget screen) {
+    return MaterialPage(child: screen);
   }
 
   @override
@@ -20,7 +31,11 @@ class AppRouter extends RouterDelegate<LinkConfig>
     return Navigator(
       key: navigatorKey,
       onPopPage: onPopPage,
-
+      pages: [
+        createPage(SignInScreen())
+      ],
     );
   }
+
+
 }

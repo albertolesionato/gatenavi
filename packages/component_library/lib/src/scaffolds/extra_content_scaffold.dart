@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ExtraContentScaffold extends StatelessWidget {
-  const ExtraContentScaffold({Key? key, required this.child, required this.extraContent})
+  const ExtraContentScaffold(
+      {Key? key, required this.child, required this.extraContent})
       : super(key: key);
 
   final Widget child;
@@ -24,11 +25,11 @@ class ExtraContentScaffold extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SizedBox(width: 340, height: 480, child: extraContent),
                   if (MediaQuery.of(context).size.width > 752) ...[
-                    const SizedBox(width: 24),
-                    SizedBox(width: 340, height: 480, child: child)
-                  ]
+                    SizedBox(width: 340, height: 480, child: extraContent),
+                    const SizedBox(width: 24)
+                  ],
+                  SizedBox(width: 340, height: 480, child: child),
                 ],
               ),
             ),
