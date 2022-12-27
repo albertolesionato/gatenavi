@@ -11,19 +11,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      routes: {
-        '/some-scaffold': (_) => const Scaffold(
-          backgroundColor: Colors.blue,
-          body: SomeScaffold(),
-        )
-      },
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Example()
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        routes: {
+          '/extra-content-scaffold': (_) => const Scaffold(
+                backgroundColor: Colors.blue,
+                body: ExtraContentScaffold(
+                  extraContent: Placeholder(),
+                  child: Placeholder(),
+                ),
+              )
+        },
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const Example());
   }
 }
 
@@ -39,8 +41,10 @@ class Example extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            ElevatedButton(onPressed: () => Navigator.pushNamed(context, '/some-scaffold'), child:
-            Text('SomeScaffold'))
+            ElevatedButton(
+                onPressed: () =>
+                    Navigator.pushNamed(context, '/extra-content-scaffold'),
+                child: const Text('ExtraContentScaffold'))
           ],
         ),
       ),
